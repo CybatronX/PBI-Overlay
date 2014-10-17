@@ -509,7 +509,7 @@ $(document).ready(function() {
 
 	setTimeout(function() {
       				startTour();
-    },500);
+    },300);
 	
 	// createDataSourcesOverlay();
 
