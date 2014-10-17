@@ -1,0 +1,22 @@
+{
+  "name": "Power BI Overlay",
+  "version":"0.1.1",
+  "manifest_version":2,
+  "description": "Getting Started Wiht Power BI",
+  "content_scripts": [
+    {
+      // Change 'matches' attribute to load content
+      // script only in pages you want to.
+      "matches": ["https://powerbi-df.analysis-df.windows.net/","https://pbipmdevrqt1.analysis.windows-int.net/"],
+      "css":["gettingStarted.css"],
+      "js": ["jquery-2.1.0.min.js", "gettingStarted.js"]
+    }
+  ],
+  
+  "web_accessible_resources": [
+    "Resources/overlayMenu.png",
+    "Resources/*.png",
+    "Resources/*.gif"
+
+  ]
+}

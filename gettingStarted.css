@@ -1,0 +1,320 @@
+.gettingStarted
+{
+
+}
+
+/*Overlay*/
+.overlay
+{
+	position: absolute;
+	z-index: 8888;
+	background-color: #000;
+	opacity: 0.85;
+	width:100%;
+	height:100%;
+	background-color: rgb(0,0,0);
+	top:0px;
+	left:0px;
+}
+
+/*Data Sources UI*/
+.dataSourcesOverlay
+{
+	background-color: white;
+	height:338px;
+	width:587px;
+	opacity:1;
+	z-index: 9000;
+	border-style: solid;
+	border-width: 1px;
+	border-color:rgb(253, 253, 253);
+	position:absolute;
+	top:32%;
+	left:35%;
+	padding: 20px;
+}
+
+.dataSourcesMenu
+{
+	width:100%;
+	height:100%;
+	background-image: url('http://i.snag.gy/S9hyT.jpg');
+	background-size:100% 100%;
+	z-index:9001;
+}
+
+.dataSourcesExcelButton
+{
+	position:absolute;
+	top:135px;
+	left:20px;
+	width:215px;
+	height:115px;
+	z-index:9002;
+	cursor: pointer;
+}
+
+.dataSourcesSalesForceButton
+{
+	position:absolute;
+	top:135px;
+	left:235px;
+	width:255px;
+	height:115px;
+	z-index:9002;
+	cursor: pointer;
+}
+
+.dataSourcesOtherLink
+{
+	position:absolute;
+	top:263px;
+	left:20px;
+	width:150px;
+	height:30px;
+	z-index:9002;
+	cursor: pointer;
+}
+
+.dataSourcesHowToLink
+{
+	position:absolute;
+	top:322px;
+	left:225px;
+	width:100px;
+	height:30px;
+	z-index:9002;
+	cursor: pointer;
+}
+
+.dataSourcesTourLink
+{
+	position:absolute;
+	top:322px;
+	left:344px;
+	width:84px;
+	height:30px;
+	z-index:9002;
+	cursor: pointer;
+}
+
+.border
+{
+	border-width: 1px;
+	border-color:rgb(200, 200, 200);
+	border-style: solid;
+}
+
+/*Tour*/
+
+.tour
+{
+
+}
+
+.elementMask
+{
+	z-index:9002;
+	position:Absolute;
+	float:left;
+	background-color: white;
+	background-size:100% 100%;
+	/*background-image: url('http://i.snag.gy/BZ5b3.jpg');*/
+}
+
+.elementMaskTemp
+{
+	z-index:9002;
+	position:Absolute;
+	float:left;
+	background-color: white;
+	background-size:100% 100%;
+	cursor:pointer;
+	/*background-image: url('http://i.snag.gy/BZ5b3.jpg');*/
+}
+
+/*Message Close*/
+
+.messageOverallContainer
+{
+	width:370px;
+	height:191px;
+	position:absolute;
+	z-index:9002;
+}
+
+.messageContainer
+{
+	width:290px;
+	height:141px;
+	left:20px;
+	background-size:100% 100%;
+	position:absolute;
+	z-index:9002;
+	padding:20px;
+	background-color: white;
+	border-style:none;
+}
+
+.message
+{
+	font-family: wf_segoe-ui_light;
+	
+	color: rgb(100, 100, 100);
+	font-size:16px;
+}
+
+.messageNextButton
+{
+	background-color: rgb(33, 115, 70);
+
+	width: 50px;
+	height:24px;
+
+	bottom:20px;
+	left:265px;
+
+	font-size:16px;
+
+	font-family: wf_segoe-ui_light;
+	
+	color: white;
+
+	position:absolute;
+	text-align:center;
+	cursor:pointer;
+}
+
+.messageStepNumber
+{
+	font-family: wf_segoe-ui_light;
+	
+	color:rgb(100, 100, 100);
+	font-size:14px;
+	position:Absolute;
+	left:220px;
+	bottom:24px;
+}
+
+.closeButton
+{
+	position:absolute;
+	top:10px;
+	left:300px;
+	cursor:pointer;
+	width:20px;
+	height:20px;
+}
+
+.carat
+{
+	width:20px;
+	height:20px;
+	background-size:100% 100%;
+	position:absolute;
+	z-index:9002;
+	left:0px;
+
+}
+
+/*Pin Icon*/
+.pin
+{
+	width:38px;
+	height:35px;
+	background-size:100% 100%;
+	position:absolute;
+	z-index:9002;
+	cursor:pointer;
+}
+
+/*Welcome Modal*/
+.welcomeMessageBox
+{
+	height:292px;
+	width: 574px;
+	top:30%;
+	left:35%;
+	position:absolute;
+	z-index:9002;
+	padding:20px;
+	background-color: white
+}
+
+.welcomeHeading
+{
+	color:rgb(50, 125, 84);
+	font-family: wf_segoe-ui_light;
+	font-size:32px;
+}
+
+.welcomeContent
+{
+	color:rgb(100, 100, 100);
+	font-family: wf_segoe-ui_light;
+	font-size:20px;
+}
+
+.welcomeButton
+{
+	background-color:rgb(33, 115, 70);
+	height:38px;
+	width:132px;
+	position:absolute;
+	top:195px;
+	cursor: pointer;
+}
+
+.welcomeButton span
+{	
+	position:absolute;
+	color:rgb(255, 255, 255);
+	font-family: wf_segoe-ui_light;
+	font-size:16px;
+	top:7px;
+	left:28px;
+}
+
+.line
+{
+	width:584px;
+	left:11px;
+	top:280px;
+	height:15px;
+	position:absolute;
+	background-size:100% 100%;
+}
+
+.welcomeCrossButton
+{
+	position:absolute;
+	left:584px;
+	top:10px;
+	cursor:pointer;
+	width:20px;
+	height:20px;
+}
+
+.welcomeFooter
+{
+	color:rgb(100, 100, 100);
+	font-family: wf_segoe-ui_light;
+	font-size:16px;
+	position:absolute;
+	top:290px;
+	left:20px;
+}
+
+.welcomeFooter a
+{
+	color:rgb(85, 138, 204);
+}
+
+
+
+
+
+
+
+
+
