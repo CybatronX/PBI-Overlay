@@ -2,13 +2,13 @@
 // 
 // 
 	
-	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
-	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
-	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
+	$('.dashboard .dashboardTile:nth-child(11) div').css("opacity",0);
+	$('.dashboard .dashboardTile:nth-child(11) div').css("opacity",0);
+	$('.dashboard .dashboardTile:nth-child(11) div').css("opacity",0);
 
 $(document).ready(function() {
 
-	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
+	$('.dashboard .dashboardTile:nth-child(11)> div').css("opacity",0);
 	
 	// Helper Functions
 	String.format = function(stringToFormat, argsForFormat) {
@@ -214,7 +214,7 @@ $(document).ready(function() {
 		});
 	}
 
-	function createElementMask(element, imageURL, forcedWidth, forcedHeight, forcedLeftOffset, forcedTopOffset )
+	function createElementMask(element, imageURL, forcedWidth, forcedHeight, forcedLeftOffset, forcedTopOffset)
 	{
 		forcedHeight 	= forcedHeight || 0;
 		forcedWidth		= forcedWidth || 0;
@@ -237,6 +237,28 @@ $(document).ready(function() {
 		$('.elementMask').hide();
 		$('.elementMask').fadeIn(10);
 	};
+
+// Step 5
+	function createElementMaskInPlace(element, imageURL)
+	{
+
+		thisTop 	= 0;
+		thisLeft 	= 0;
+		thisHeight	= element.height();
+		thisWidth	= element.width();
+		// formattedImageURL 	= "url(\'" + imageURL + "\')";
+		formattedImageURL	= "url(\'" + chrome.extension.getURL(imageURL) + "\')";;
+
+		tempString = "<div class=\"tour elementMask currentStep\" style=\"top:{0}px;left:{1}px;height:{2}px;width:{3}px;background-image:{4}\"> </div>"
+		args = [thisTop, thisLeft, thisHeight, thisWidth, formattedImageURL];
+		highlightDiv = String.format(tempString, args);
+
+		element.append(highlightDiv);
+		$('.elementMask').hide();
+		$('.elementMask').fadeIn(10);
+	};
+
+
 
 	maxStepNumber = 5;
 
@@ -425,17 +447,17 @@ $(document).ready(function() {
 		$(".overlay").css("opacity","0.95");
 		parent.history.back();
 
-		setTimeout(function() {
 			
 			$(".bottomBar").css("z-index","9003");
 
 			// Create Element Mask
 			element 		= $('.dashboard .dashboardTile:nth-child(11)');
 			imageURL 		= "Resources/pinnedTile.png";
-			createElementMask(element, imageURL);
+			createElementMaskInPlace(element, imageURL);
 
 			$(".overlay").css("opacity","0.85");
 
+			setTimeout(function() {
 			// Create Message Text
 			messageText 		= "Pinned visuals are added as new tiles to the bottom of your dashboard.  Now you can easily monitor your most important data.";
 			stepNumber 			= 4;
@@ -466,7 +488,7 @@ $(document).ready(function() {
 				step6(); 	
 			});
 
-		}, 600);
+		}, 1000);
 	}
 
 	function step6()
@@ -483,8 +505,10 @@ $(document).ready(function() {
 			stepNumber 			= 5;
 			position 			= "left";
 
-			createMessage(element, messageText, stepNumber, position, 0, 27, "Try it!");		
+			createMessage(element, messageText, stepNumber, position, 0, 27, "Try it!");	
 
+			$(".elementMask").css("cursor","pointer");
+			
 			$(".messageNextButton").click(function(){
 				$(".currentStep").remove();
 				$(".gettingStarted").remove();
@@ -498,10 +522,7 @@ $(document).ready(function() {
 				$(".gettingStarted").remove();
 				$(".bottomBar").css("z-index	","0");
 				connectToData();
-			});
-
-			$(".elementMask").css("cursor","pointer");
-
+			});	
 	}
 
 	function connectToData()
