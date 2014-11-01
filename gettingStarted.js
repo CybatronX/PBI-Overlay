@@ -1,8 +1,14 @@
 // http://i.snag.gy/DADO3.jpg - Up arrow
 // 
 // 
+	
+	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
+	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
+	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
 
 $(document).ready(function() {
+
+	$('.dashboard .dashboardTile:nth-child(11)').css("opacity",0);
 	
 	// Helper Functions
 	String.format = function(stringToFormat, argsForFormat) {
@@ -61,13 +67,13 @@ $(document).ready(function() {
 			element.parent().append(caratString);
 			$(".carat").hide();
 
-			caratURL		= "url(\'" + chrome.extension.getURL("Resources/carat_left.png") + "\')";;
+			caratURL		= "url(\'" + chrome.extension.getURL("Resources/caret_stroke.png") + "\')";;
 			$(".carat").css("background-image", caratURL); 
 
-			caratLeft 		= elementLeft - 20;
-			caratTop		= (elementHeight)/2 + 10;
+			caratTop		= (elementHeight)/2 - 30;
 
 			$(".carat").css("top",caratTop);
+			$(".carat").css("transform","rotate(180deg)");
 
 			$(".carat").fadeIn(fadeInTime);
 		}
@@ -86,10 +92,10 @@ $(document).ready(function() {
 			element.parent().append(caratString);
 			$(".carat").hide();
 
-			caratURL		= "url(\'" + chrome.extension.getURL("Resources/carat_right.png") + "\')";;
+			caratURL		= "url(\'" + chrome.extension.getURL("Resources/caret_stroke.png") + "\')";;
 			$(".carat").css("background-image", caratURL); 
 
-			caratTop		= (elementHeight)/2 + 10;
+			caratTop		= (elementHeight)/2 - 30;
 
 			$(".carat").css("top",caratTop);
 			$(".carat").css("left", "350px");
@@ -113,7 +119,7 @@ $(document).ready(function() {
 			anchorWidth				= anchorElement.width();
 
 			targetVerticalCenter	= (anchorTop) + (anchorHeight/2);
-			targetTop 				= targetVerticalCenter - (targetElement.height()/2) ;
+			targetTop 				= targetVerticalCenter - (targetElement.height()/2) + 20 ;
 
 			targetLeft 				= anchorLeft + anchorWidth ;
 			targetOffset 			= {top:targetTop, left:targetLeft};
@@ -299,7 +305,7 @@ $(document).ready(function() {
 		createOverlay();
 
 		// Create Element Mask
-		element 	= $('#dashboard1 .dashboardTile:nth-child(3)');
+		element 	= $('.dashboard .dashboardTile:nth-child(3)');
 		imageURL = "Resources/tile.png";
 		createElementMask(element, imageURL);
 
@@ -320,7 +326,7 @@ $(document).ready(function() {
       			$(".tour").remove();
 
       			// Trigger the click for the next element
-      			$('#dashboard1 .dashboardTile:nth-child(3) .compositeTile').click();
+      			$('.dashboard .dashboardTile:nth-child(3) .compositeTile').click();
 
       			// call the next step
       			setTimeout(function() {
@@ -336,7 +342,7 @@ $(document).ready(function() {
       			$(".tour").remove();
 
       			// Trigger the click for the next element
-      			$('#dashboard1 .dashboardTile:nth-child(3) .compositeTile').click();
+      			$('.dashboard .dashboardTile:nth-child(3) .compositeTile').click();
 
       			// call the next step
       			setTimeout(function() {
@@ -422,8 +428,9 @@ $(document).ready(function() {
 		setTimeout(function() {
 			
 			$(".bottomBar").css("z-index","9003");
+
 			// Create Element Mask
-			element 		= $('#dashboard1 .dashboardTile:nth-child(11)');
+			element 		= $('.dashboard .dashboardTile:nth-child(11)');
 			imageURL 		= "Resources/pinnedTile.png";
 			createElementMask(element, imageURL);
 
@@ -445,8 +452,16 @@ $(document).ready(function() {
 			$(".messageNextButton").click(function(){
 				$(".currentStep").hide("slow");
 				$(".gettingStarted").hide("slow");
+
+				backgroundImage.removeClass("tour");
+				backgroundImage.removeClass("currentStep");
 				backgroundImage = $(".elementMaskTemp");
 				backgroundImage.css("z-index","200");
+
+				backgroundImage.click(function(){
+					$('.dashboard .dashboardTile:nth-child(11)').trigger("click");
+				});
+
 
 				step6(); 	
 			});
@@ -468,7 +483,7 @@ $(document).ready(function() {
 			stepNumber 			= 5;
 			position 			= "left";
 
-			createMessage(element, messageText, stepNumber, position, 0, 0, "Try it!");		
+			createMessage(element, messageText, stepNumber, position, 0, 27, "Try it!");		
 
 			$(".messageNextButton").click(function(){
 				$(".currentStep").remove();
@@ -506,6 +521,11 @@ $(document).ready(function() {
 			exitTour();
 		}   // esc
 	});
+
+			// hide the bottom image
+	element 		= $('.dashboard .dashboardTile:nth-child(11)');
+
+
 
 	setTimeout(function() {
       				startTour();
