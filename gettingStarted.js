@@ -121,7 +121,7 @@ $(document).ready(function() {
 			targetVerticalCenter	= (anchorTop) + (anchorHeight/2);
 			targetTop 				= targetVerticalCenter - (targetElement.height()/2) + 20 ;
 
-			targetLeft 				= anchorLeft + anchorWidth ;
+			targetLeft 				= anchorLeft + anchorWidth -5 ;
 			targetOffset 			= {top:targetTop, left:targetLeft};
 		}
 		else if(position === "left")
@@ -134,7 +134,7 @@ $(document).ready(function() {
 			targetVerticalCenter	= (anchorTop) + (anchorHeight/2);
 			targetTop 				= targetVerticalCenter - (targetElement.height()/2) ;
 
-			targetLeft 				= anchorLeft - targetElement.width() ;
+			targetLeft 				= anchorLeft - targetElement.width() +5 ;
 			targetOffset 			= {top:targetTop, left:targetLeft};
 		}
 		else if(position === "top")
@@ -444,18 +444,15 @@ $(document).ready(function() {
 	function step5()
 	{
 		createOverlay();
-		$(".overlay").css("opacity","0.95");
 		parent.history.back();
 
 			
-			$(".bottomBar").css("z-index","9003");
+			$(".bottomBar").css("z-index","9015");
 
 			// Create Element Mask
 			element 		= $('.dashboard .dashboardTile:nth-child(11)');
 			imageURL 		= "Resources/pinnedTile.png";
 			createElementMaskInPlace(element, imageURL);
-
-			$(".overlay").css("opacity","0.85");
 
 			setTimeout(function() {
 			// Create Message Text
