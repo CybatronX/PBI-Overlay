@@ -258,6 +258,30 @@ $(document).ready(function() {
 		$('.elementMask').fadeIn(10);
 	};
 
+	function createElementMaskHidden(element, imageURL, forcedWidth, forcedHeight, forcedLeftOffset, forcedTopOffset)
+	{
+		forcedHeight 	= forcedHeight || 0;
+		forcedWidth		= forcedWidth || 0;
+
+		forcedLeftOffset 	= forcedLeftOffset || 0;
+		forcedTopOffset		= forcedTopOffset || 0;
+
+		thisTop 	= element.offset().top + forcedTopOffset;
+		thisLeft 	= element.offset().left + forcedLeftOffset;
+		thisHeight	= element.height() + forcedHeight;
+		thisWidth	= element.width() + forcedWidth;
+		// formattedImageURL 	= "url(\'" + imageURL + "\')";
+		formattedImageURL	= "url(\'" + chrome.extension.getURL(imageURL) + "\')";;
+
+		tempString = "<div class=\"tour elementMask currentStep\" style=\"top:{0}px;left:{1}px;height:{2}px;width:{3}px;\"> </div>"
+		args = [thisTop, thisLeft, thisHeight, thisWidth, formattedImageURL];
+		highlightDiv = String.format(tempString, args);
+
+		$('body').append(highlightDiv);
+		$('.elementMask').hide();
+		$('.elementMask').fadeIn(10);
+	};
+
 
 
 	maxStepNumber = 5;
@@ -329,7 +353,7 @@ $(document).ready(function() {
 		// Create Element Mask
 		element 	= $('.dashboard .dashboardTile:nth-child(3)');
 		imageURL = "Resources/tile.png";
-		createElementMask(element, imageURL);
+		createElementMaskHidden(element, imageURL);
 
 		// Create Message Text
 		messageText 		= "Your dashboard is made up of tiles that provide a live view of your data.  You can click a tile to deeply explore the data behind it.";
@@ -381,11 +405,11 @@ $(document).ready(function() {
 
 			element 	= $("div[data-vrmname='CategoryChart:Chart7']");
 			imageURL 	= "Resources/TopBar.png";
-			createElementMask(element, imageURL);
+			createElementMaskHidden(element, imageURL);
 
 			element 	= $("div[data-vrmname='Map:Chart1']");
 			imageURL 	= "Resources/Map.png";
-			createElementMask(element, imageURL);
+			createElementMaskHidden(element, imageURL);
 
 			messageText 		= "Reports provide a detailed set of insights for a collected set of data.  This sample report describes the year to date trend of units manufactured.";
 			stepNumber 			= 2;
@@ -395,7 +419,7 @@ $(document).ready(function() {
 			$(".messageNextButton").click(function(){
 
       			// cleanup
-      			$(".currentStep").remove();
+      			$(".currentStep").css("z-index", "9001");
       			step4();
 			});
 
@@ -408,7 +432,7 @@ $(document).ready(function() {
 	{
 		element 	= $("div[data-vrmname='Map:Chart1']");
 		imageURL 	= "Resources/Map.png";
-		createElementMask(element, imageURL);
+		createElementMaskHidden(element, imageURL);
 
 		// Create the pin icon
 		element 	= $("div[data-vrmname='Map:Chart1']");
@@ -494,7 +518,7 @@ $(document).ready(function() {
 
 			element 		= $('.ms-Icon--upload');
 			imageURL 		= "Resources/upload.png";
-			createElementMask(element, imageURL, 0, -7, 0, 0);
+			createElementMaskHidden(element, imageURL, 0, -7, 0, 0);
 
 			// Create Message Text
 			element 			= $(".elementMask");
